@@ -1,0 +1,116 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Student {
+
+    String name;
+    double marks;
+
+    Student(String name, double marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    String getGrade() {
+
+        if (marks >= 90) {
+            return "A";
+        } else if (marks >= 75) {
+            return "B";
+        } else if (marks >= 60) {
+            return "C";
+        } else if (marks >= 40) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+}
+
+public class StudentManagement {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+
+        while (true) {
+
+            System.out.println("\n--- STUDENT MANAGEMENT ---");
+            System.out.println("1. Add Student");
+            System.out.println("2. View Students");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            if (choice == 1) {
+
+                System.out.print("Enter student name: ");
+                String name = sc.nextLine();
+
+                System.out.print("Enter marks: ");
+                double marks = sc.nextDouble();
+
+                students.add(new Student(name, marks));
+
+                System.out.println("Student added.");
+
+            } else if (choice == 2) {
+
+                System.out.println("\n--- STUDENTS ---");
+
+                for (Student student : students) {
+
+                    System.out.println(
+                        student.name +
+                        ": " +
+                        student.marks +
+                        " - Grade " +
+                        student.getGrade()
+                    );
+                }
+
+            } else if (choice == 3) {
+
+                System.out.println("Program ended.");
+                break;
+
+            } else {
+                System.out.println("Invalid choice.");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+--- STUDENT MANAGEMENT ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 1
+Enter student name: Rahul
+Enter marks: 85
+Student added.
+
+--- STUDENT MANAGEMENT ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 1
+Enter student name: Priya
+Enter marks: 92
+Student added.
+
+--- STUDENT MANAGEMENT ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 2
+
+--- STUDENTS ---
+Rahul: 85.0 - Grade B
+Priya: 92.0 - Grade A
